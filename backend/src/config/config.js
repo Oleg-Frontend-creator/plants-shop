@@ -1,8 +1,7 @@
 const config = {
     secret: 'd1UCyUDKC0TiWhDbs6U5QWiez6',
     env: process.env.NODE_ENV || 'development',
-    port: process.env.PORT | 3000,
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    port: process.env.PORT || 3000,
     db: {
         dbUrl: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/im'
     },
