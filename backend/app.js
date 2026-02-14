@@ -18,6 +18,10 @@ const UserModel = require("./src/models/user.model");
 const JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 
+app.get('/test', (req, res) => {
+    res.json({message: 'Back is alive'});
+});
+
 MongoDBConnection.getConnection((error, connection) => {
     if (error || !connection) {
         console.log('Db connection error', error);
@@ -59,7 +63,7 @@ MongoDBConnection.getConnection((error, connection) => {
         }
 
         if (user) {
-            return  next(null, payload);
+            return next(null, payload);
         }
 
         next(new Error('Пользователь не найден'));
