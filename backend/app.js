@@ -27,7 +27,10 @@ MongoDBConnection.getConnection((error, connection) => {
 
     app.use(express.static(path.join(__dirname, 'public')));
     app.use(express.json());
-    app.use(cors({credentials: true, origin: true}));
+    app.use(cors({
+        credentials: true,
+        origin: 'https://backend-production-202c.up.railway.app'
+    }));
 
     app.use(session({
         genid: function (req) {
