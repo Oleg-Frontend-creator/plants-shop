@@ -101,8 +101,5 @@ export class HeaderComponent implements OnInit {
     if(!inside) {
       this.showedSearch = false;
     }
-    // if (this.showedSearch && (event.target as HTMLElement).className.indexOf('search-product') === -1) {
-    //   this.showedSearch = false;
-    // }
   }
 }
