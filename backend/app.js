@@ -29,7 +29,7 @@ MongoDBConnection.getConnection((error, connection) => {
     app.use(express.json());
     app.use(cors({
         credentials: true,
-        origin: 'https://backend-production-202c.up.railway.app'
+        origin: process.env.FRONTEND_URL || 'http://localhost:3000'
     }));
 
     app.use(session({
