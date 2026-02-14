@@ -18,16 +18,16 @@ const UserModel = require("./src/models/user.model");
 const JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 
-app.get('/test', (req, res) => {
-    res.json({message: 'Back is alive'});
-});
-
 MongoDBConnection.getConnection((error, connection) => {
     if (error || !connection) {
         console.log('Db connection error', error);
         return;
     }
     const app = express();
+
+    app.get('/test', (req, res) => {
+        res.json({message: 'Back is alive'});
+    });
 
     app.use(express.static(path.join(__dirname, 'public')));
     app.use(express.json());
