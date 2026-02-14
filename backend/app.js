@@ -29,7 +29,7 @@ MongoDBConnection.getConnection((error, connection) => {
     app.use(express.json());
     app.use(cors({
         credentials: true,
-        origin: config.origin.FRONTEND_URL || 'http://localhost:3000'
+        origin: true
     }));
 
     app.use(session({
