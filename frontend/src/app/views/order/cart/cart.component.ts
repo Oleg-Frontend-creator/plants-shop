@@ -17,9 +17,11 @@ export class CartComponent implements OnInit {
   extraProducts: ProductType[] = [];
   customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
     dots: false,
     navSpeed: 700,
     margin: 24,

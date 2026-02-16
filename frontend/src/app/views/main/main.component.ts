@@ -14,9 +14,11 @@ export class MainComponent implements OnInit {
 
   customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
     dots: false,
     navSpeed: 700,
     margin: 24,
@@ -40,9 +42,11 @@ export class MainComponent implements OnInit {
 
   customOptionsReviews: OwlOptions = {
     loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
     dots: false,
     navSpeed: 700,
     margin: 26,
@@ -106,7 +110,7 @@ export class MainComponent implements OnInit {
     this.productService.getBestProducts()
       .subscribe((data: ProductType[]) => {
         this.products = data;
-      })
+      });
   }
 
 }

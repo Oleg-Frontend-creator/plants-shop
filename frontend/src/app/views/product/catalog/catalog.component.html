@@ -41,8 +41,9 @@
         <category-filter type="height"></category-filter>
         <category-filter type="diameter"></category-filter>
       </div>
-      <div class="catalog-products" [class.products-empty]="productEmpty">
-        <product-card *ngFor="let product of products" [product]="product" [countInCart]="product.countInCart"></product-card>
+      <div class="catalog-products" [class.products-empty]="productEmpty" [@listAnimation]="products.length">
+        <product-card *ngFor="let product of products; trackBy: trackByAnimationKey"
+                      [product]="product" [countInCart]="product.countInCart"></product-card>
         <div class="caption-text" *ngIf="productEmpty">
           Товары не найдены, попробуйте поставить другие фильтры
         </div>

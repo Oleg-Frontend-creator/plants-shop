@@ -1,4 +1,5 @@
 export type ProductType = {
+  animationKey: string,
   id: string,
   name: string,
   price: number,

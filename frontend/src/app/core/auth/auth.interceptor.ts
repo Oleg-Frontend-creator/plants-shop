@@ -15,7 +15,10 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.loaderService.show();
+    const skipLoader = req.headers.has('x-skip-loader');
+    if (!skipLoader) {
+      this.loaderService.show();
+    }
 
     const tokens = this.authService.getTokens();
     if (tokens && tokens.accessToken) {

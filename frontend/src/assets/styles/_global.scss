@@ -6,6 +6,7 @@ html, body {
   padding: 0;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
+  scroll-behavior: smooth;
 }
 
 .container {
@@ -16,11 +17,11 @@ html, body {
 .input {
   border-radius: 3px;
   padding: 17px 20px;
-  border: 2px solid #2A592E;
+  border: 2px solid $green-elements;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 14px;
-  color: $gray-text-color;
+  color: $gray-text;
 
   &::placeholder {
     color: #A8ABA7;
@@ -30,7 +31,7 @@ html, body {
 .small-input {
   border-radius: 5px;
   padding: 2px;
-  border: 1px solid #6cac72;
+  border: 1px solid #648F64;
   box-sizing: border-box;
   text-align: center;
   width: 40px;
@@ -38,18 +39,17 @@ html, body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 18px;
-  color: $green-text-color;
+  color: $green-text;
   outline: none;
 
   &::placeholder {
     color: #A8ABA7;
   }
 }
-
 .button {
   text-align: center;
   padding: 15px;
-  background-color: #456F49;
+  background: #2A592E;
   border-radius: 5px;
   box-sizing: border-box;
   cursor: pointer;
@@ -58,11 +58,52 @@ html, body {
   font-weight: 400;
   font-size: 16px;
   color: #FFFFFF;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: #5b8b5f;
+    box-shadow: 0 8px 16px rgba(69, 111, 73, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s;
+  }
+
+  &:active::after {
+    transform: translate(-50%, -50%) scale(20);
+    opacity: 1;
+    transition: 0s;
+  }
 
   &.button-transparent {
-    background-color: transparent;
-    border: 1px solid #6CAC72;
-    color: $green-text-color;
+    background: transparent;
+    border: 1px solid #648F64;
+    color: $green-text;
+
+    &:hover {
+      background-color: rgba(108, 172, 114, 0.2);
+      border-color: lighten(#648F64, 10%);
+      color: #648F64;
+      box-shadow: 0 0 12px rgba(108, 172, 114, 0.6);
+    }
   }
 
   &.button-icon {
@@ -70,29 +111,57 @@ html, body {
     align-items: center;
     justify-content: center;
 
+    svg, img {
+      transition: transform 0.3s ease;
+    }
+
     span {
       margin-left: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      svg, img {
+        transform: scale(1.1) rotate(5deg);
+      }
+      span {
+        transform: translateX(4px);
+      }
     }
   }
 
-  &.button-in-cart span {
-    &:first-child {
-      display: block;
-    }
+  &.button-in-cart {
+    position: relative;
 
-    &:last-child {
-      display: none;
-    }
-  }
+    span {
+      transition: all .2s ease;
 
-  &:hover {
-    &.button-in-cart span {
       &:first-child {
-        display: none;
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
       }
 
       &:last-child {
         display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) translateY(10px);
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    &:hover span {
+      &:first-child {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      &:last-child {
+        opacity: 1;
+        transform: translate(-50%, -50%) translateY(0);
       }
     }
   }
@@ -100,6 +169,28 @@ html, body {
   &:disabled {
     background: gray;
     cursor: not-allowed;
+    transition: background 0.3s ease;
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
+// Дополнительная анимация пульсации (можно добавить через отдельный класс, например для акцентных кнопок)
+.button-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(108, 172, 114, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(108, 172, 114, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(108, 172, 114, 0);
   }
 }
 
@@ -114,7 +205,7 @@ a.button {
 
   a {
     text-decoration: none;
-    color: $gray-text-color;
+    color: $gray-text;
     cursor: pointer;
   }
 }
@@ -156,7 +247,6 @@ input[type=number] {
 
 
 $color1: #f4f4f4;
-$color2: #2A592E;
 
 input[type="radio"] {
   margin: 0.5rem;
@@ -186,7 +276,7 @@ input[type="radio"] {
   &:checked {
     + label {
       &:before {
-        background-color: $color2;
+        background-color: $green-elements;
         box-shadow: inset 0 0 0 4px $color1;
       }
     }
@@ -196,7 +286,7 @@ input[type="radio"] {
     + label {
       &:before {
         outline: none;
-        border-color: $color2;
+        border-color: $green-elements;
       }
     }
   }
@@ -225,4 +315,8 @@ input[type="radio"] {
 }
 .mat-progress-spinner circle, .mat-spinner circle{
   stroke: #648F64;
+}
+
+.owl-item {
+  padding-top: 5px;
 }

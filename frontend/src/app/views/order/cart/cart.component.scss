@@ -71,7 +71,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             font-size: 18px;
-            color: $gray-text-color;
+            color: $gray-text;
             margin-right: 19px;
           }
 
@@ -94,14 +94,14 @@
             font-family: 'Lora', sans-serif;
             font-weight: 400;
             font-size: 26px;
-            color: $green-text-color;
+            color: $green-text;
             margin-bottom: 20px;
           }
 
           .cart-details-info-item {
             display: flex;
             align-items: center;
-            color: $gray-text-color;
+            color: $gray-text;
 
             &.first {
               margin-bottom: 10px;
@@ -139,7 +139,7 @@
             &.button-transparent {
               width: 255px;
               margin-right: 12px;
-              color: #6CAC72;
+              color: #648F64;
             }
           }
         }

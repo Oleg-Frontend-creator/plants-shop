@@ -8,7 +8,7 @@
     font-family: "Lora", sans-serif;
     font-weight: 400;
     font-size: 36px;
-    color: $green-text-color;
+    color: $green-text;
     margin-bottom: 35px;
   }
 
@@ -37,7 +37,7 @@
       label {
         font-size: 16px;
         line-height: 130%;
-        color: $gray-text-color;
+        color: $gray-text;
         margin-left: 10px;
 
         a {
@@ -59,7 +59,7 @@
   .auth-link {
     margin-top: 8px;
     font-size: 16px;
-    color: $gray-text-color;
+    color: $gray-text;
 
     a {
       text-decoration: none;

@@ -8,7 +8,7 @@
   .container {
     .favorite-title {
       @include head-lora-36;
-      color: $green-text-color;
+      color: $green-text;
       margin-bottom: 35px;
     }
 
@@ -38,7 +38,7 @@
         .favorite-product-name {
           margin-left: 24px;
           font-size: 20px;
-          color: $gray-text-color;
+          color: $gray-text;
           width: 567px;
           margin-right: 20px;
         }
@@ -49,7 +49,7 @@
           font-size: 22px;
           width: 100px;
           margin-right: 193px;
-          color: $gray-text-color;
+          color: $gray-text;
         }
 
         .favorite-product-action {

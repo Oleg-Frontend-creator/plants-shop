@@ -7,7 +7,7 @@ const config = {
     },
     deliveryCost: 10,
     deliveryTypes: {delivery: 'delivery', self: 'self'},
-    paymentTypes: {cashToCourier: 'cashToCourier', cardOnline: 'cardOnline', cardToCourier: 'cardToCourier'},
+    paymentTypes: {cashToCourier: 'cashToCourier', cardToCourier: 'cardToCourier'},
     statuses: {new: 'new', pending: 'pending', delivery: 'delivery', cancelled: 'cancelled', success: 'success'}
 };
 

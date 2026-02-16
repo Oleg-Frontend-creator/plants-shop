@@ -7,7 +7,7 @@
 
   .catalog-title {
     @include head-lora-36;
-    color: $green-text-color;
+    color: $green-text;
     margin-bottom: 33px;
     margin-left: 317px;
   }
@@ -27,7 +27,7 @@
         border: 1px solid #E7F1E8;
         font-size: 16px;
         line-height: 130%;
-        color: $gray-text-color;
+        color: $gray-text;
         padding: 8px 14px;
         display: flex;
         align-items: center;
@@ -49,6 +49,7 @@
       box-sizing: border-box;
       position: relative;
       cursor: pointer;
+      transition: all .3s ease;
 
       .catalog-sorting-head {
         display: flex;
@@ -56,7 +57,12 @@
         justify-content: right;
         padding: 12px 0 12px 23px;
         font-size: 16px;
-        color: $gray-text-color;
+        color: $gray-text;
+        transition: all .3s ease;
+
+        svg {
+          transition: all .3s ease;
+        }
 
         span {
           margin-right: 8px;
@@ -68,22 +74,32 @@
         width: 100%;
         box-sizing: border-box;
         z-index: 3;
-        display: none;
-        padding: 12px 23px;
+        display: flex;
+        flex-direction: column;
         background: #f5f5f5;
         border-radius: 0 0 5px 5px;
+        overflow: hidden;
+        height: 0;
         font-size: 16px;
         color: #8E8E8E;
+        transition: all .3s ease;
 
         .catalog-sorting-item {
-          margin-bottom: 14px;
           cursor: pointer;
-
-          &:last-child {
-            margin-bottom: 0;
-          }
+          transition: all .3s ease;
+          padding: 12px 23px;
+          transform: translateY(-20px);
+          opacity: 0;
+          visibility: hidden;
 
           &.active {
+            color: #313131;
+            background-color: $green-light-bg;
+            border-radius: 0;
+          }
+
+          &:hover {
+            background: #EBEBEB;
             color: #313131;
           }
         }
@@ -92,16 +108,33 @@
       &.open {
         width: 257px;
         min-width: 257px;
+
         .catalog-sorting-head {
           color: black;
           background: #EBEBEB;
           justify-content: space-between;
           border-radius: 5px 5px 0 0;
           padding-right: 23px;
+
+          svg {
+            transform: rotate(180deg);
+          }
         }
 
         .catalog-sorting-body {
-          display: block;
+          height: auto;
+
+          .catalog-sorting-item {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+
+            @for $i from 1 through 20 {
+              &:nth-child(#{$i}) {
+                transition-delay: #{$i * 0.05 + 0.1}s;
+              }
+            }
+          }
         }
       }
     }
@@ -147,8 +180,19 @@
       justify-content: center;
       align-items: center;
 
+      svg path {
+        transition: all .3s ease;
+      }
+
+      &:hover:not(&.disabled) {
+        svg path {
+          fill: $green-light-bg;
+        }
+      }
+
       &.disabled {
         opacity: 0.5;
+        cursor: unset;
       }
     }
 
@@ -170,10 +214,11 @@
         margin-right: 15px;
         cursor: pointer;
         font-size: 20px;
-        color: $gray-text-color;
+        color: $gray-text;
+        transition: all .3s ease;
 
-        &.active {
-          background: #B6D5B9;
+        &.active, &:hover {
+          background: $green-light-bg;
         }
 
         &:last-child {

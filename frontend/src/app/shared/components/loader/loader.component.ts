@@ -19,5 +19,4 @@ export class LoaderComponent implements OnInit {
         this.isShowed = isShowed;
       })
   }
-
 }

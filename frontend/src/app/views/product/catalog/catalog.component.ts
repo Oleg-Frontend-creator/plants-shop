@@ -14,11 +14,24 @@ import {FavoriteService} from "../../../shared/services/favorite.service";
 import {FavoriteType} from "../../../../types/favorite.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {AuthService} from "../../../core/auth/auth.service";
+import {trigger, transition, style, animate, query, stagger, animation} from '@angular/animations';
 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  styleUrls: ['./catalog.component.scss'],
+  animations: [
+    trigger('listAnimation', [
+      transition('* => *', [                      // Срабатывает при любом изменении списка
+        query(':enter', [                               // Для входящих элементов
+          style({opacity: 0, transform: 'translateY(20px)'}), // Начальное состояние
+          stagger(70, [                                 // Задержка между элементами (70 мс)
+            animate('350ms ease-out', style({opacity: 1, transform: 'translateY(0)'}))
+          ])
+        ], {optional: true})
+      ])
+    ])
+  ]
 })
 export class CatalogComponent implements OnInit {
 
@@ -84,7 +97,7 @@ export class CatalogComponent implements OnInit {
 
       this.activatedRoute.queryParams
         .pipe(
-          debounceTime(500)
+          debounceTime(1000)
         )
         .subscribe(params => {
           this.activeParams = ActiveParamsUtil.processParams(params);
@@ -136,6 +149,8 @@ export class CatalogComponent implements OnInit {
               for (let i = 1; i <= data.pages; i++) {
                 this.pages.push(i);
               }
+
+              data.items
               if (this.cart && this.cart.items.length > 0) {
                 this.products = data.items.map(product => {
                   if (this.cart) {
@@ -145,10 +160,12 @@ export class CatalogComponent implements OnInit {
                     }
                   }
 
+                  product.animationKey = Date.now() + '-' + product.id + '-' + Math.random();
                   return product;
                 });
               } else {
                 this.products = data.items;
+                this.products.map(product => product.animationKey = Date.now() + '-' + product.id + '-' + Math.random());
               }
               this.productEmpty = data.pages === 0;
               if (this.favoriteProducts) {
@@ -158,12 +175,17 @@ export class CatalogComponent implements OnInit {
                     product.isFavorite = true;
                   }
 
+                  product.animationKey = Date.now() + '-' + product.id + '-' + Math.random();
                   return product;
-                })
+                });
               }
             });
         });
     });
+  }
+
+  trackByAnimationKey(index: number, product: any): string {
+    return product.animationKey;
   }
 
   removeAppliedFilter(appliedFilter: AppliedFilterType) {

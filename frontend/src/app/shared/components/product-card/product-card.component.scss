@@ -5,6 +5,15 @@
   height: 498px;
   box-sizing: border-box;
   position: relative;
+  transition: all .3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+
+    .product-card-image {
+      opacity: 1;
+    }
+  }
 
   &.is-light {
     height: auto;
@@ -33,7 +42,7 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 130%;
-    color: $green-text-color;
+    color: $green-text;
     margin-top: 15px;
   }
 
@@ -50,7 +59,7 @@
       font-weight: 600;
       font-size: 22px;
       line-height: 130%;
-      color: $green-text-color;
+      color: $green-text;
     }
 
     .product-card-action .button {

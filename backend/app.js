@@ -89,6 +89,10 @@ MongoDBConnection.getConnection((error, connection) => {
     });
 
     app.use(function (err, req, res, next) {
+        if (err.name === 'UnauthorizedError' || err.message === 'jwt expired') {
+            return res.status(401).json({ error: true, message: 'jwt expired' });
+        }
+
         res.status(err.statusCode || 500).send({error: true, message: err.message});
     });
     const PORT = config.port || 3000;

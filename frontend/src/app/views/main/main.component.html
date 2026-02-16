@@ -23,7 +23,7 @@
             Подпишись на наш аккаунт и напиши в direct “хочу промокод”
           </div>
           <div class="offer-button">
-            <a href="#" class="button">Получить промокод</a>
+            <a href="#" class="button button-pulse">Получить промокод</a>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@
           <img src="./assets/images/page/offer-collections.png" alt="Offer 2">
         </div>
         <div class="offer-button">
-          <a href="/catalog" class="button">В каталог</a>
+          <a href="/catalog" class="button button-pulse">В каталог</a>
         </div>
       </div>
     </div>
@@ -111,10 +111,11 @@
         <ng-template carouselSlide *ngFor="let review of reviews">
           <div class="review-item">
             <div class="review-item-head">
-              <div class="review-item-image" style="background-image: url('/assets/images/reviews/{{review.image}}')"></div>
-              <div class="review-item-name">{{review.name}}</div>
+              <div class="review-item-image"
+                   style="background-image: url('/assets/images/reviews/{{review.image}}')"></div>
+              <div class="review-item-name">{{ review.name }}</div>
             </div>
-            <div class="review-item-text">{{review.text}}</div>
+            <div class="review-item-text">{{ review.text }}</div>
           </div>
         </ng-template>
       </owl-carousel-o>
@@ -138,5 +139,7 @@
   </div>
 </section>
 <section class="map">
-  <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A07528ddd43a83546463c9746f3bbae24455978551713d42aa1b6208d3b4998fa&amp;source=constructor" width="100%" height="500" frameborder="0"></iframe>
+  <iframe
+    src="https://yandex.ru/map-widget/v1/?um=constructor%3A07528ddd43a83546463c9746f3bbae24455978551713d42aa1b6208d3b4998fa&amp;source=constructor"
+    width="100%" height="500" frameborder="0"></iframe>
 </section>

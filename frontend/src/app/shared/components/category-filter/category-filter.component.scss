@@ -4,31 +4,68 @@
   border-radius: 5px;
   margin-bottom: 12px;
   font-size: 16px;
-  color: $gray-text-color;
+  color: $gray-text;
 
   .catalog-filter-head {
-    background-color: #B6D5B9;
+    background-color: $green-light-bg;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 23px;
     cursor: pointer;
+    transition: all .3s ease;
 
     svg {
       margin-top: 2px;
+      transition: all 0.3s ease;
+
+      path {
+        transition: fill .3s ease;
+      }
     }
   }
 
-  &.open .catalog-filter-head {
-    border-radius: 5px 5px 0 0;
+  &.open {
+    .catalog-filter-head {
+      border-radius: 5px 5px 0 0;
+      color: $light-text;
+      background-color: $green-soft;
+
+      svg {
+        transform: rotate(180deg);
+        path {
+          fill: $light-text;
+        }
+      }
+    }
+
+    .catalog-filter-body {
+      height: auto;
+      padding: 12px 16px;
+      border: 1px solid $green-light-bg;
+
+      .catalog-filter-checkbox {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+
+        @for $i from 1 through 20 {
+          &:nth-child(#{$i}) {
+            transition-delay: #{$i * 0.05 + 0.1}s;
+          }
+        }
+      }
+    }
   }
 
   .catalog-filter-body {
-    display: none;
-    border: 1px solid #B6D5B9;
+    height: 0;
+    box-sizing: border-box;
+    border: 1px solid transparent;
     border-radius: 0 0 5px 5px;
-    padding: 12px 16px;
+    padding: 0 16px;
+    transition: .3s all ease;
 
     .catalog-filter-checkbox {
       display: flex;
@@ -36,6 +73,10 @@
       margin-bottom: 19px;
       line-height: 130%;
       cursor: pointer;
+      opacity: 0;
+      transform: translateY(-10px);
+      visibility: hidden;
+      transition: .2s all ease-in-out;
 
       input {
         margin-right: 10px;
@@ -50,10 +91,22 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      opacity: 0;
+      transform: translateY(-15px);
+      visibility: hidden;
+      transition: .2s all ease-in-out;
     }
   }
 
-  &.open .catalog-filter-body {
-    display: block;
+  &.open {
+    .catalog-filter-body {
+      display: block;
+
+      .catalog-filter-from-to {
+        opacity: 1;
+        transform: translateY(0px);
+        visibility: visible;
+      }
+    }
   }
 }

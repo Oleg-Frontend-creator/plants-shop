@@ -19,7 +19,7 @@ export class OrderStatusUtil {
         break;
       case OrderStatusType.success:
         name = 'Выполнен';
-        color = '#B6D5B9';
+        color = '$green-light-bg';
         break;
     }
 
