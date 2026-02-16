@@ -42,6 +42,11 @@ MongoDBConnection.getConnection((error, connection) => {
         genid: function (req) {
             return uuidv4();
         },
+        cookie: {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // true на HTTPS
+            sameSite: 'none' // необходимо для кросс-доменных запросов
+        },
         secret: '0SddfAS9fAdFASASSFwdVCXLZJKHfss',
         resave: false,
         saveUninitialized: true,
