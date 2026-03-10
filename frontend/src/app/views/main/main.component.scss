@@ -33,6 +33,7 @@
   .container {
     display: flex;
     justify-content: space-between;
+    gap: 24px;
 
     .offer {
       width: 600px;
@@ -41,8 +42,6 @@
       background-color: #fff;
       border-radius: 5px;
       box-sizing: border-box;
-      box-shadow: unset;
-      transform: translateY(0);
       transition: 0.4s all ease-in-out;
 
       .offer-title {
@@ -53,12 +52,6 @@
 
       .offer-content {
         display: flex;
-
-        .offer-text {
-          font-size: 16px;
-          line-height: 130%;
-          color: $green-text;
-        }
       }
 
       &.offer-instagram {
@@ -68,6 +61,9 @@
         }
 
         .offer-text {
+          font-size: 16px;
+          line-height: 130%;
+          color: $green-text;
           margin-top: 16px;
           max-width: 234px;
           margin-left: 58px;
@@ -123,7 +119,7 @@
 
 .info {
   background-color: $green-light-bg;
-  background-image: url("../../../assets/images/page/info-bg.png");
+  background-image: url("../../../assets/images/page/info-bg.webp");
   background-repeat: no-repeat;
   background-position-x: calc(50% + 340px);
   padding: 80px 0;
@@ -154,19 +150,15 @@
         }
       }
 
-      &.info-delivery {
-        .info-text:last-child {
-          margin-top: 16px;
-        }
+      &.info-delivery .info-text:last-child {
+        margin-top: 16px;
       }
 
-      &.info-payment {
-        .info-text {
-          margin-bottom: 10px;
+      &.info-payment .info-text {
+        margin-bottom: 10px;
 
-          &:last-child {
-            margin-bottom: 0;
-          }
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }
@@ -186,38 +178,19 @@
 
     .reviews-carousel {
       position: relative;
+      padding: 0 48px;
 
       .review-item {
-        width: 396px;
-        height: 267px;
+        width: 100%;
+        min-height: 267px;
         padding: 30px;
         border: 2px solid $green-elements;
         border-radius: 10px;
         box-sizing: border-box;
-        transform: translateY(0);
         transition: .3s all ease;
-        position: relative;
-        overflow: hidden;
-
-        &:before {
-          background: radial-gradient(120px 120px at 20% 10%, rgba(159, 255, 80, 0.2), transparent 60%),
-          radial-gradient(140px 140px at 90% 80%, rgba(140, 251, 255, 0.1), transparent 60%);
-          border-radius: inherit;
-          content: "";
-          inset: -1px;
-          opacity: 0;
-          pointer-events: none;
-          position: absolute;
-          transition: opacity .2s ease;
-        }
 
         &:hover {
           transform: translateY(-5px);
-          border: 2px solid #5cd166;
-
-          &:before {
-            opacity: 1;
-          }
         }
 
         .review-item-head {
@@ -228,9 +201,16 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background-position: center;
-            background-size: cover;
             margin-right: 26px;
+            overflow: hidden;
+            flex-shrink: 0;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 50%;
+            }
           }
 
           .review-item-name {
@@ -258,11 +238,11 @@
           cursor: pointer;
 
           &.move-backward {
-            left: -41px;
+            left: 0;
           }
 
           &.move-forward {
-            right: -41px;
+            right: 0;
           }
         }
       }
@@ -272,4 +252,249 @@
 
 .map iframe {
   vertical-align: bottom;
+}
+
+@media (min-width: 1400px) {
+  .main {
+    padding-bottom: 280px;
+
+    .container .main-title {
+      font-size: 72px;
+    }
+  }
+}
+
+@media (max-width: 1300px) {
+  .offers {
+    padding: 50px 0;
+
+    .container {
+      flex-direction: column;
+      align-items: center;
+
+      .offer {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        min-height: 200px;
+        padding: 28px;
+
+        &.offer-instagram {
+          .offer-button {
+            margin-left: 0;
+            margin-top: 16px;
+          }
+
+          .offer-text, .offer-button {
+            margin-left: 24px;
+          }
+        }
+
+        &.offer-collection {
+          .offer-image {
+            margin-left: 24px;
+          }
+
+          .offer-button {
+            margin-top: 24px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .main {
+    background-position: right -60px top;
+    background-size: 50%;
+    padding-bottom: 120px;
+
+    .container {
+      .main-title {
+        font-size: 46px;
+        margin-bottom: 40px;
+      }
+
+      .main-text {
+        font-size: 16px;
+        max-width: 400px;
+      }
+    }
+  }
+
+  .best-products {
+    padding: 60px 0;
+  }
+
+  .reviews {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 767px) {
+  .main {
+    background-image: none;
+    padding-top: 32px;
+    padding-bottom: 48px;
+
+    .container {
+      .main-title {
+        font-size: 32px;
+        margin-bottom: 24px;
+        line-height: 1.2;
+      }
+
+      .main-text {
+        font-size: 15px;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .offers {
+    padding: 32px 0;
+
+    .container {
+      .offer {
+        max-width: 100%;
+        height: auto;
+        padding: 20px;
+
+        .offer-title {
+          font-size: 17px;
+        }
+
+        &.offer-instagram {
+          .offer-content {
+            flex-direction: column;
+          }
+
+          .offer-image {
+            display: none;
+          }
+
+          .offer-text {
+            margin: 12px 0 0 0;
+            max-width: 100%;
+          }
+
+          .offer-button {
+            margin: 16px 0 0;
+
+            .button {
+              width: 100%;
+            }
+          }
+        }
+
+        &.offer-collection {
+          .offer-content {
+            flex-direction: column;
+          }
+
+          .offer-image {
+            margin: 12px 0 0;
+            text-align: center;
+
+            img {
+              max-height: 120px;
+            }
+          }
+
+          .offer-button {
+            margin: 16px 0 0;
+
+            .button {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .best-products {
+    padding: 40px 0;
+  }
+
+  .info {
+    background-image: none;
+    padding: 40px 0;
+
+    .container {
+      .info-title {
+        font-size: 24px;
+      }
+
+      .info-item {
+        max-width: 100%;
+        margin-top: 24px;
+      }
+    }
+  }
+
+  .reviews {
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    .container {
+      .reviews-title {
+        font-size: 24px;
+        margin-bottom: 32px;
+      }
+
+      .reviews-carousel {
+        padding: 0 32px;
+
+        .review-item {
+          min-height: unset;
+          padding: 20px;
+
+          .review-item-head .review-item-image {
+            width: 48px;
+            height: 48px;
+          }
+
+          .review-item-text {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .map iframe {
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main .container .main-title {
+    font-size: 26px;
+  }
+
+  .reviews .container .reviews-carousel {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 320px) {
+  .main .container .main-title {
+    font-size: 22px;
+  }
+  .offers .container .offer {
+    padding: 16px;
+  }
+}
+
+.best-products {
+  ::ng-deep owl-carousel-o .owl-stage {
+    transition: all 0.4s ease !important;
+  }
+
+  ::ng-deep owl-carousel-o .owl-item {
+    transition: width 0.4s ease !important;
+  }
 }

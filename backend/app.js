@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const compression = require('compression');
 const categoryRoutes = require('./src/routes/category.routes');
 const typeRoutes = require('./src/routes/type.routes');
 const productRoutes = require('./src/routes/product.routes');
@@ -25,7 +26,18 @@ MongoDBConnection.getConnection((error, connection) => {
     }
     const app = express();
 
-    app.use(express.static(path.join(__dirname, 'public')));
+    app.use(compression());
+
+    // Cache-Control для статики: 1 год для файлов с хешем в имени
+    app.use(express.static(path.join(__dirname, 'public'), {
+        maxAge: '1y',
+        setHeaders: (res, filePath) => {
+            // HTML не кешируем — он должен всегда быть свежим
+            if (filePath.endsWith('.html')) {
+                res.setHeader('Cache-Control', 'no-cache');
+            }
+        }
+    }));
     app.use(express.json());
 
     app.use((req, res, next) => {
@@ -105,4 +117,3 @@ MongoDBConnection.getConnection((error, connection) => {
         console.log(`Server started on port ${PORT}`)
     );
 })
-

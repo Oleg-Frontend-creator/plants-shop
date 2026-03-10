@@ -7,15 +7,22 @@
       <div class="auth-inputs">
         <div class="auth-input">
           <input type="text" class="input"
-                 [ngStyle]="{'border-color': loginForm.get('email')!.invalid &&
-                 (loginForm.get('email')!.dirty || loginForm.get('email')!.touched) ? 'red':''}"
+                 [class.input-error]="loginForm.get('email')!.invalid &&
+                 (loginForm.get('email')!.dirty || loginForm.get('email')!.touched)"
                  placeholder="Электронная почта" formControlName="email">
+          <div class="field-error" *ngIf="loginForm.get('email')!.touched && loginForm.get('email')!.errors">
+            <span *ngIf="loginForm.get('email')!.errors?.['required']">Введите email</span>
+            <span *ngIf="loginForm.get('email')!.errors?.['email']">Некорректный формат email</span>
+          </div>
         </div>
         <div class="auth-input">
           <input type="password" class="input"
-                 [ngStyle]="{'border-color': loginForm.get('password')!.invalid &&
-                 (loginForm.get('password')!.dirty || loginForm.get('password')!.touched) ? 'red':''}"
+                 [class.input-error]="loginForm.get('password')!.invalid &&
+                 (loginForm.get('password')!.dirty || loginForm.get('password')!.touched)"
                  placeholder="Пароль" formControlName="password">
+          <div class="field-error" *ngIf="loginForm.get('password')!.touched && loginForm.get('password')!.errors">
+            <span *ngIf="loginForm.get('password')!.errors?.['required']">Введите пароль</span>
+          </div>
         </div>
         <div class="auth-checkbox">
           <input type="checkbox" id="remember" formControlName="rememberMe">
@@ -30,7 +37,7 @@
       </div>
     </div>
     <div class="page-image">
-      <img src="assets/images/page/login.png" alt="Flower">
+      <img loading="eager" src="assets/images/page/login.png" alt="Flower">
     </div>
   </div>
 </section>

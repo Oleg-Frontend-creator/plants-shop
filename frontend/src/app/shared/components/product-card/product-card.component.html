@@ -21,10 +21,16 @@
     </svg>
     </span>
   </div>
-  <div class="product-card-image" style="background-image: url({{serverStaticPath + product.image}})"></div>
-  <div class="product-card-name">{{product.name}}</div>
+  <div class="product-card-image">
+    <img [src]="serverStaticPath + product.image"
+         [alt]="product.name"
+         width="270"
+         height="270"
+         loading="lazy">
+  </div>
+  <div class="product-card-name">{{ product.name }}</div>
   <div class="product-card-info" *ngIf="!isLight">
-    <div class="product-card-price">{{product.price}} BYN</div>
+    <div class="product-card-price">{{ product.price }} BYN</div>
     <div class="product-card-action">
       <button class="button" *ngIf="!countInCart" (click)="addToCart()">В корзину</button>
       <button class="button button-transparent button-in-cart" *ngIf="countInCart" (click)="removeFromCart()">

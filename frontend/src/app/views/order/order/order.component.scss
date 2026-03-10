@@ -15,9 +15,11 @@
       margin-top: 30px;
       display: flex;
       justify-content: space-between;
+      gap: 40px;
 
       .order-details {
         width: 422px;
+        flex-shrink: 0;
 
         .order-details-info {
           background: #E7F1E8;
@@ -94,5 +96,63 @@
   .order-popup-content div {
     font-size: 20px;
     margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .order .container .order-info {
+    gap: 24px;
+  }
+  .order .container .order-info .order-details {
+    width: 340px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order {
+    padding-top: 32px;
+    padding-bottom: 48px;
+
+    .container {
+      .order-title {
+        font-size: 24px;
+      }
+
+      .order-info {
+        flex-direction: column-reverse;
+
+        .order-details {
+          width: 100%;
+
+          .order-details-info {
+            padding: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .order-popup {
+    padding: 60px 24px 180px;
+
+    .order-popup-title {
+      font-size: 22px;
+    }
+
+    .order-popup-content div {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .order .container .order-info .order-details .order-details-info {
+    .order-details-info-item-text {
+      font-size: 14px;
+    }
+
+    .order-details-info-item-data {
+      font-size: 16px;
+    }
   }
 }

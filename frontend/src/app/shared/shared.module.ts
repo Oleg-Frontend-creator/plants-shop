@@ -6,25 +6,23 @@ import {RouterLink, RouterLinkWithHref} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {CategoryFilterComponent} from './components/category-filter/category-filter.component';
 import {CountSelectorComponent} from './components/count-selector/count-selector.component';
-import { LoaderComponent } from './components/loader/loader.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
-  declarations: [PasswordRepeatDirective, ProductCardComponent, CategoryFilterComponent, CountSelectorComponent, LoaderComponent],
-    imports: [
-        CommonModule,
-        RouterLinkWithHref,
-        FormsModule,
-        RouterLink,
-        MatProgressSpinnerModule
-    ],
+  declarations: [PasswordRepeatDirective, ProductCardComponent, CategoryFilterComponent, CountSelectorComponent],
+  imports: [
+    CommonModule,
+    RouterLinkWithHref,
+    FormsModule,
+    RouterLink,
+    MatProgressSpinnerModule
+  ],
   exports: [
     PasswordRepeatDirective,
     ProductCardComponent,
     CategoryFilterComponent,
-    CountSelectorComponent,
-    LoaderComponent
+    CountSelectorComponent
   ]
 })
 export class SharedModule {

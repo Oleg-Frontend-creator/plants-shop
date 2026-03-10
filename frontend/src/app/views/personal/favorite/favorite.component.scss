@@ -33,6 +33,7 @@
           width: 100px;
           height: 100px;
           border-radius: 5px;
+          flex-shrink: 0;
         }
 
         .favorite-product-name {
@@ -52,19 +53,16 @@
           color: $gray-text;
         }
 
-        .favorite-product-action {
+        .favorite-product-action .button {
+          width: 160px;
+        }
+
+        .favorite-product-action .in-cart-block {
+          display: flex;
+          align-items: center;
+
           .button {
-            width: 160px;
-          }
-
-          .in-cart-block {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            .button {
-              margin-left: 20px;
-            }
+            margin-left: 20px;
           }
         }
 
@@ -86,6 +84,90 @@
       .button {
         width: 255px;
         margin-top: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .favorite .container .favorite-products .favorite-product {
+    .favorite-product-name {
+      width: 300px;
+    }
+
+    .favorite-product-price {
+      margin-right: 40px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .favorite {
+    padding-top: 28px;
+    padding-bottom: 48px;
+
+    .container {
+      .favorite-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      .favorite-products .favorite-product {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 16px 0;
+
+        .favorite-product-image {
+          width: 72px;
+          height: 72px;
+        }
+
+        .favorite-product-name {
+          width: calc(100% - 96px);
+          margin-left: 12px;
+          font-size: 15px;
+          margin-right: 0;
+        }
+
+        .favorite-product-price {
+          width: auto;
+          margin-right: 0;
+          font-size: 18px;
+        }
+
+        .favorite-product-action {
+          flex: 1;
+
+          .button {
+            width: 100%;
+          }
+        }
+
+        .favorite-product-remove {
+          margin-left: 0;
+        }
+      }
+
+      .favorite-empty {
+        margin-bottom: 40px;
+
+        .button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .favorite .container .favorite-products .favorite-product {
+    .favorite-product-action .in-cart-block {
+      flex-direction: column;
+      gap: 8px;
+
+      .button {
+        margin-left: 0;
+        width: 100%;
       }
     }
   }

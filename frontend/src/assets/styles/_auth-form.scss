@@ -22,6 +22,28 @@
         margin: 0;
         width: 422px;
         box-sizing: border-box;
+        transition: border-color 0.2s ease;
+
+        &.input-error {
+          border-color: #e53935;
+        }
+      }
+
+      .field-error {
+        margin-top: 4px;
+        font-size: 13px;
+        color: #e53935;
+        min-height: 18px;
+        padding-left: 2px;
+      }
+
+      .password-hint {
+        margin-top: 4px;
+        font-size: 13px;
+        color: $gray-text;
+        padding-left: 2px;
+        line-height: 1.4;
+        max-width: 422px;
       }
     }
 
@@ -29,6 +51,7 @@
       max-width: 422px;
       display: flex;
       align-items: baseline;
+      margin-top: 8px;
 
       input {
         margin: 0;
@@ -45,6 +68,13 @@
           text-decoration: none;
         }
       }
+    }
+
+    .field-error {
+      margin-top: 4px;
+      font-size: 13px;
+      color: #e53935;
+      padding-left: 2px;
     }
   }
 

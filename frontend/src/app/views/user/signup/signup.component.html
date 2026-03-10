@@ -7,22 +7,47 @@
       <div class="auth-inputs">
         <div class="auth-input">
           <input type="text" class="input"
-                 [ngStyle]="{'border-color': signupForm.get('email')!.invalid &&
-                 (signupForm.get('email')!.dirty || signupForm.get('email')!.touched) ? 'red':''}"
+                 [class.input-error]="signupForm.get('email')!.invalid &&
+                 (signupForm.get('email')!.dirty || signupForm.get('email')!.touched)"
                  placeholder="Электронная почта" formControlName="email">
+          <div class="field-error" *ngIf="signupForm.get('email')!.touched && signupForm.get('email')!.errors">
+            <span *ngIf="signupForm.get('email')!.errors?.['required']">Введите email</span>
+            <span *ngIf="signupForm.get('email')!.errors?.['email']">Некорректный формат email</span>
+          </div>
         </div>
+
         <div class="auth-input">
           <input type="password" class="input"
-                 [ngStyle]="{'border-color': signupForm.get('password')!.invalid &&
-                 (signupForm.get('password')!.dirty || signupForm.get('password')!.touched) ? 'red':''}"
+                 [class.input-error]="signupForm.get('password')!.invalid &&
+                 (signupForm.get('password')!.dirty || signupForm.get('password')!.touched)"
                  placeholder="Пароль" formControlName="password">
+          <div class="field-error" *ngIf="signupForm.get('password')!.touched && signupForm.get('password')!.errors">
+            <span *ngIf="signupForm.get('password')!.errors?.['required']">Введите пароль</span>
+            <span *ngIf="signupForm.get('password')!.errors?.['pattern']">
+              Минимум 8 символов, заглавная буква и цифра
+            </span>
+          </div>
+          <div class="password-hint" *ngIf="!signupForm.get('password')!.touched">
+            <span>Минимум 8 символов, одна заглавная буква и одна цифра</span>
+          </div>
         </div>
+
         <div class="auth-input">
           <input type="password" class="input"
-                 [ngStyle]="{'border-color': signupForm.get('passwordRepeat')!.invalid &&
-                 (signupForm.get('passwordRepeat')!.dirty || signupForm.get('passwordRepeat')!.touched) ? 'red':''}"
+                 [class.input-error]="signupForm.get('passwordRepeat')!.invalid &&
+                 (signupForm.get('passwordRepeat')!.dirty || signupForm.get('passwordRepeat')!.touched)"
                  placeholder="Повторите пароль" formControlName="passwordRepeat">
+          <div class="field-error"
+               *ngIf="signupForm.get('passwordRepeat')!.touched && signupForm.get('passwordRepeat')!.errors">
+            <span *ngIf="signupForm.get('passwordRepeat')!.errors?.['required']">Повторите пароль</span>
+            <span *ngIf="signupForm.get('passwordRepeat')!.errors?.['pattern']">Пароли не совпадают</span>
+            <span
+              *ngIf="signupForm.errors?.['passwordMismatch'] && !signupForm.get('passwordRepeat')!.errors?.['required']">
+              Пароли не совпадают
+            </span>
+          </div>
         </div>
+
         <div class="auth-checkbox">
           <input type="checkbox" id="agree" formControlName="agree">
           <label for="agree">
@@ -30,7 +55,12 @@
             на обработку персональных данных.</a>
           </label>
         </div>
+        <div class="field-error"
+             *ngIf="signupForm.get('agree')!.touched && signupForm.get('agree')!.errors?.['required']">
+          Необходимо принять условия
+        </div>
       </div>
+
       <div class="auth-action">
         <button class="button" [disabled]="signupForm.invalid" (click)="signup()">Зарегистрироваться</button>
       </div>
@@ -39,7 +69,7 @@
       </div>
     </div>
     <div class="page-image">
-      <img src="assets/images/page/signup.png" alt="Flower">
+      <img loading="eager" src="assets/images/page/signup.png" alt="Flower">
     </div>
   </div>
 </section>

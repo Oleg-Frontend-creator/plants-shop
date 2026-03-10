@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../../core/auth/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -12,11 +12,11 @@ import {HttpErrorResponse} from "@angular/common/http";
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent {
   signupForm = this.fb.group({
     email: ['', [Validators.email, Validators.required]],
-    password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)]],
-    passwordRepeat: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)]],
+    password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)]],
+    passwordRepeat: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)]],
     agree: [false, [Validators.requiredTrue]]
   });
 
@@ -24,9 +24,6 @@ export class SignupComponent implements OnInit {
               private authService: AuthService,
               private _snackBar: MatSnackBar,
               private router: Router) {
-  }
-
-  ngOnInit(): void {
   }
 
   signup(): void {

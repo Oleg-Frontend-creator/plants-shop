@@ -17,3 +17,16 @@
     }
   }
 }
+
+@media (max-width: 1024px) {
+  .signup .container .page-image {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .signup {
+    margin-top: 0;
+    padding: 32px 0 48px;
+  }
+}

@@ -24,3 +24,50 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .personal-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  .personal-pages-selector {
+    font-size: 20px;
+    margin-bottom: 30px;
+
+    .personal-page {
+      padding: 0 10px 10px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .personal-title {
+    font-size: 22px;
+  }
+
+  .personal-pages-selector {
+    font-size: 18px;
+    margin-bottom: 24px;
+
+    .personal-page {
+      padding: 0 8px 8px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .personal-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .personal-pages-selector {
+    font-size: 16px;
+    margin-bottom: 20px;
+
+    .personal-page {
+      padding: 0 6px 8px;
+    }
+  }
+}

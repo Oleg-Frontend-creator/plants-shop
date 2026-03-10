@@ -7,3 +7,112 @@
 body {
   margin: 0;
 }
+
+// Container responsive
+// Если .container задан фиксированной шириной — переопределяем:
+
+@media (max-width: 1400px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1240px) {
+  .container {
+    max-width: 100%;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 0 10px;
+  }
+}
+
+// Personal pages selector responsive
+// (используется в info и orders)
+@media (max-width: 767px) {
+  .personal-pages-selector {
+    margin-bottom: 24px !important;
+
+    .personal-page {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+}
+
+// Data-form responsive
+// (используется в order и info)
+@media (max-width: 767px) {
+  .data-form {
+    .data-form-block {
+      margin-bottom: 20px;
+    }
+
+    .data-form-inputs {
+      &.personal-data-inputs,
+      &.address-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        .input {
+          width: 100% !important;
+          box-sizing: border-box;
+        }
+      }
+    }
+
+    .data-form-types {
+      .data-form-type-item {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// Buttons responsive
+@media (max-width: 320px) {
+  .button {
+    font-size: 13px;
+    padding: 10px 16px;
+    min-height: 42px;
+  }
+}
+
+// Auth form responsive
+@media (max-width: 767px) {
+  .auth-form {
+    width: 100% !important;
+    padding: 24px 0 !important;
+
+    .auth-title {
+      font-size: 22px !important;
+    }
+
+    .auth-inputs .input {
+      width: 100% !important;
+      box-sizing: border-box;
+    }
+
+    .auth-action .button {
+      width: 100% !important;
+    }
+  }
+}

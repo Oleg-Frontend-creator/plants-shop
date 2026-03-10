@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, Validators} from "@angular/forms";
+import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator} from "@angular/forms";
 
 @Directive({
   selector: '[passwordRepeat]',
@@ -11,8 +11,14 @@ export class PasswordRepeatDirective implements Validator {
     const passwordRepeat = control.get('passwordRepeat');
 
     if (password?.value !== passwordRepeat?.value) {
-      passwordRepeat?.setErrors({passwordRepeat: true});
+      passwordRepeat?.setErrors({...passwordRepeat.errors, passwordRepeat: true});
       return {passwordRepeat: true};
+    }
+
+    if (passwordRepeat?.errors) {
+      const errors = {...passwordRepeat.errors};
+      delete errors['passwordRepeat'];
+      passwordRepeat.setErrors(Object.keys(errors).length ? errors : null);
     }
 
     return null;

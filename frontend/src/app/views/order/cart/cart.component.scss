@@ -14,7 +14,7 @@
       margin-top: 20px;
       margin-bottom: 100px;
 
-      div{
+      div {
         font-size: 16px;
       }
 
@@ -54,13 +54,13 @@
             height: 80px;
             margin-right: 26px;
             border-radius: 5px;
+            flex-shrink: 0;
           }
 
           .cart-product-name {
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
             font-size: 16px;
-            line-height: 130%;
             color: black;
             width: 247px;
             margin-right: 10px;
@@ -123,7 +123,7 @@
             margin-top: 5px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
-            font-style: Italic;
+            font-style: italic;
             font-size: 14px;
           }
         }
@@ -145,5 +145,109 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1024px) {
+  .cart {
+    padding-top: 40px;
+    padding-bottom: 60px;
+
+    .container .cart-info {
+      gap: 24px;
+
+      .cart-products {
+        width: auto;
+        flex: 1;
+      }
+
+      .cart-details {
+        width: 320px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .cart {
+    padding-top: 28px;
+    padding-bottom: 48px;
+
+    .container {
+      .cart-title {
+        font-size: 28px;
+      }
+
+      .cart-empty {
+        margin-bottom: 40px;
+
+        .button {
+          width: 100%;
+        }
+      }
+
+      .cart-info {
+        flex-direction: column;
+        margin-top: 24px;
+        margin-bottom: 48px;
+
+        .cart-products {
+          width: 100%;
+
+          .cart-product {
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-top: 16px;
+            margin-top: 16px;
+
+            .cart-product-image {
+              width: 64px;
+              height: 64px;
+              margin-right: 0;
+            }
+
+            .cart-product-name {
+              width: calc(100% - 80px);
+              margin-right: 0;
+              font-size: 14px;
+            }
+
+            .cart-product-price {
+              margin-left: 0;
+              font-size: 16px;
+              order: 3;
+            }
+
+            .cart-product-remove {
+              order: 4;
+            }
+          }
+        }
+
+        .cart-details {
+          width: 100%;
+
+          .cart-details-info {
+            padding: 24px;
+          }
+
+          .cart-details-actions {
+            flex-direction: column;
+            gap: 12px;
+
+            .button, .button.button-transparent {
+              width: 100%;
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .cart .container .cart-info .cart-products .cart-product .cart-product-name {
+    font-size: 13px;
   }
 }

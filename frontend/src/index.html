@@ -1,15 +1,74 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="utf-8">
-  <title>Frontend</title>
+  <title>Home Decor — Магазин растений и кашпо в Минске</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Интернет-магазин комнатных растений и керамических кашпо в Минске. Доставка курьером по Минску и всей Беларуси через СДЭК. Самовывоз: ул. Калиновского 61, офис 6.">
+  <meta name="keywords" content="комнатные растения, кашпо, купить растения Минск, доставка растений Беларусь, горшки для растений, суккуленты, цветы">
+  <meta name="author" content="Home Decor">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://homedecor.by/">
+
+  <!-- Open Graph — для соцсетей (ВКонтакте, Facebook, Telegram) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://homedecor.by/">
+  <meta property="og:title" content="Home Decor — Магазин растений и кашпо в Минске">
+  <meta property="og:description" content="Комнатные растения и керамические кашпо с доставкой по Минску и всей Беларуси. Большой ассортимент, быстрая доставка, самовывоз.">
+  <meta property="og:image" content="https://homedecor.by/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Home Decor">
+
+  <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+
+  <!-- PWA -->
+  <meta name="theme-color" content="#2C5F2E">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Home Decor">
+
+  <!-- Preload hero-изображения (LCP) -->
+  <link rel="preload" href="assets/images/page/main.png" as="image">
+
+  <!-- Preload критичных шрифтов -->
+  <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Lora-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Roboto для Angular Material -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Структурированные данные для Google -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "Home Decor",
+      "description": "Интернет-магазин комнатных растений и керамических кашпо",
+      "url": "https://homedecor.by",
+      "telephone": "+375299182888",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Калиновского 61, подъезд 1, офис 6",
+        "addressLocality": "Минск",
+        "addressCountry": "BY"
+      },
+      "openingHours": "Mo-Su 09:00-21:00",
+      "priceRange": "$$",
+      "hasMap": "https://yandex.ru/maps/?ll=27.615,53.906"
+    }
+  </script>
 </head>
 <body>
-  <app-root></app-root>
+<app-root></app-root>
 </body>
 </html>

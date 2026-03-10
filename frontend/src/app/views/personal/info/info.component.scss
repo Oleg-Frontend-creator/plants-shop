@@ -28,3 +28,40 @@
     }
   }
 }
+
+@media (max-width: 1240px) {
+  .info .page-image {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .info {
+    padding-top: 28px;
+    padding-bottom: 48px;
+
+    .container .data-form .button {
+      width: 100%;
+      height: 48px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .info {
+    padding-top: 20px;
+    padding-bottom: 36px;
+  }
+}
+
+@media (max-width: 320px) {
+  .info {
+    padding-top: 16px;
+    padding-bottom: 28px;
+
+    .container .data-form .button {
+      height: 44px;
+      font-size: 14px;
+    }
+  }
+}

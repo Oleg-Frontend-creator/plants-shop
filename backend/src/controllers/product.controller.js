@@ -2,6 +2,14 @@ const ProductModel = require("../models/product.model");
 const ProductNormalizer = require("../normalizers/product.normalizer");
 const TypeModel = require("../models/type.model");
 
+// Простой in-memory кеш для getBestProducts
+// Данные не меняются часто — обновляем раз в 10 минут
+const bestProductsCache = {
+    data: null,
+    timestamp: 0,
+    TTL: 10 * 60 * 1000 // 10 минут
+};
+
 class ProductController {
 
     static async getProducts(req, res) {
@@ -106,12 +114,23 @@ class ProductController {
     }
 
     static async getBestProducts(req, res) {
+        const now = Date.now();
+
+        // Отдаём из кеша если он ещё свежий
+        if (bestProductsCache.data && (now - bestProductsCache.timestamp) < bestProductsCache.TTL) {
+            return res.json(bestProductsCache.data);
+        }
+
         let products = await ProductModel.find().populate('type').lean();
         const count = 8;
         const randomIndex = Math.floor(Math.random() * (products.length - count) + 1) - 1;
         products = products.slice(randomIndex, randomIndex + count);
-
         products = products.map(item => ProductNormalizer.normalize(item));
+
+        // Сохраняем в кеш
+        bestProductsCache.data = products;
+        bestProductsCache.timestamp = now;
+
         res.json(products);
     }
 

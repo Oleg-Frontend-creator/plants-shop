@@ -1,4 +1,5 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 import {Observable, Subject, throwError} from "rxjs";
 import {DefaultResponseType} from "../../../types/default-response.type";
 import {LoginResponseType} from "../../../types/login-response.type";
@@ -16,8 +17,13 @@ export class AuthService {
   public isLogged$: Subject<boolean> = new Subject<boolean>();
   public isLogged: boolean = false;
 
-  constructor(private http: HttpClient) {
-    this.isLogged = !!localStorage.getItem(this.accessTokenKey);
+  private isBrowser: boolean;
+
+  constructor(private http: HttpClient,
+              @Inject(PLATFORM_ID) private platformId: Object) {
+    // На сервере localStorage недоступен — проверяем платформу
+    this.isBrowser = isPlatformBrowser(this.platformId);
+    this.isLogged = this.isBrowser ? !!localStorage.getItem(this.accessTokenKey) : false;
   }
 
   login(email: string, password: string, rememberMe: boolean): Observable<DefaultResponseType | LoginResponseType> {
@@ -57,6 +63,7 @@ export class AuthService {
   }
 
   public setTokens(accessToken: string, refreshToken: string): void {
+    if (!this.isBrowser) return;
     localStorage.setItem(this.accessTokenKey, accessToken);
     localStorage.setItem(this.refreshTokenKey, refreshToken);
     this.isLogged = true;
@@ -64,6 +71,7 @@ export class AuthService {
   }
 
   public removeTokens(): void {
+    if (!this.isBrowser) return;
     localStorage.removeItem(this.accessTokenKey);
     localStorage.removeItem(this.refreshTokenKey);
     this.isLogged = false;
@@ -71,6 +79,7 @@ export class AuthService {
   }
 
   public getTokens(): { accessToken: string | null, refreshToken: string | null } {
+    if (!this.isBrowser) return {accessToken: null, refreshToken: null};
     return {
       accessToken: localStorage.getItem(this.accessTokenKey),
       refreshToken: localStorage.getItem(this.refreshTokenKey)
@@ -78,10 +87,12 @@ export class AuthService {
   }
 
   get userId(): null | string {
+    if (!this.isBrowser) return null;
     return localStorage.getItem(this.userIdKey);
   }
 
   set userId(id: string | null) {
+    if (!this.isBrowser) return;
     if (id) {
       localStorage.setItem(this.userIdKey, id);
     } else {

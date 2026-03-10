@@ -1,8 +1,7 @@
 @import "../../../../assets/styles/variables";
 
 .product-card {
-  width: 291px;
-  height: 498px;
+  width: 100%;
   box-sizing: border-box;
   position: relative;
   transition: all .3s ease;
@@ -29,15 +28,22 @@
   }
 
   .product-card-image {
-    width: 291px;
-    height: 291px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     border-radius: 5px;
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
   }
 
   .product-card-name {
-    height: 52px;
+    min-height: 52px;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 20px;
@@ -63,7 +69,9 @@
     }
 
     .product-card-action .button {
-      width: 166px;
+      width: auto;
+      min-width: 120px;
+      white-space: nowrap;
     }
   }
 

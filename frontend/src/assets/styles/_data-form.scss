@@ -69,12 +69,12 @@
       }
 
       &.personal-data-inputs {
-        grid-template-columns: repeat(3, 210px);
+        grid-template-columns: repeat(3, 1fr);
       }
 
       &.address-inputs {
-        grid-template-columns: repeat(2, 125px) 162px;
-        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto auto;
         grid-template-areas:
                 'street street street'
                 'house entrance apartment';
@@ -116,6 +116,107 @@
             font-style: normal;
             font-weight: 500;
           }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .data-form {
+    max-width: 100%;
+
+    .data-form-block {
+      margin-bottom: 24px;
+
+      .data-form-label {
+        font-size: 15px;
+        margin-bottom: 14px;
+      }
+
+      .data-form-label-additional {
+        font-size: 14px;
+        max-width: 100%;
+      }
+
+      .data-form-inputs {
+        &.personal-data-inputs {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        &.address-inputs {
+          grid-template-columns: 1fr 1fr;
+          grid-template-areas:
+            'street street'
+            'house entrance'
+            'apartment apartment';
+        }
+      }
+
+      .data-form-types {
+        max-width: 100%;
+        font-size: 16px;
+
+        .data-form-type-item {
+          flex: 1;
+          padding: 12px 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .data-form {
+    .data-form-block {
+      .data-form-inputs {
+        &.personal-data-inputs {
+          grid-template-columns: 1fr;
+        }
+
+        &.address-inputs {
+          grid-template-columns: 1fr 1fr;
+          grid-template-areas:
+            'street street'
+            'house entrance'
+            'apartment apartment';
+        }
+
+        input[type="text"] {
+          height: 48px;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .data-form {
+    .data-form-block {
+      margin-bottom: 20px;
+
+      .data-form-inputs {
+        &.address-inputs {
+          grid-template-columns: 1fr;
+          grid-template-areas:
+            'street'
+            'house'
+            'entrance'
+            'apartment';
+        }
+
+        input[type="text"] {
+          height: 44px;
+          font-size: 14px;
+        }
+      }
+
+      .data-form-types {
+        font-size: 14px;
+
+        .data-form-type-item {
+          padding: 10px 12px;
         }
       }
     }
